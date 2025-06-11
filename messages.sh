@@ -11,12 +11,13 @@ else
   echo "imessage-exporter is already installed. Skipping installation."
 fi
 
-# Output wanted messages to HTML
+# Exported wanted messages
 while IFS="," read -r number start_date end_date
 do
+
+  # Export as HTML
   echo -e "\n\n\nCreating HTML for $number from $start_date to $end_date\n\n\n"
   mkdir -p "$OUTPUT_DIR/HTML/$number"
-
   $BIN -l -c clone -f html -o "$OUTPUT_DIR/HTML/$number" -s $start_date -e $end_date \
     --conversation-filter $number;
 
