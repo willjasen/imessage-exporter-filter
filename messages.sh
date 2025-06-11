@@ -1,7 +1,12 @@
 #!/bin/bash
 
-#echo -E "\n\n\nDELETING PREVIOUS DATA!!!\n\n\n"
-#find "$PWD" -type d -name '*' -delete
+# Check if imessage-exporter is installed
+if [ ! -f "/Users/willjasen/.cargo/bin/imessage-exporter" ]; then
+  echo "imessage-exporter not found. Installing..."
+  cargo install imessage-exporter
+else
+  echo "imessage-exporter is already installed. Skipping installation."
+fi
 
 # Output wanted messages to HTML
 while IFS="," read -r number start_date end_date
