@@ -1,7 +1,9 @@
 #!/bin/bash
 
+BIN="/Users/willjasen/.cargo/bin/imessage-exporter"
+
 # Check if imessage-exporter is installed
-if [ ! -f "/Users/willjasen/.cargo/bin/imessage-exporter" ]; then
+if [ ! -f $BIN ]; then
   echo "imessage-exporter not found. Installing..."
   cargo install imessage-exporter
 else
@@ -13,11 +15,11 @@ while IFS="," read -r number start_date end_date
 do
   echo -e "\n\n\nCreating HTML to $number from $start_date to $end_date\n\n\n"
   mkdir "$PWD/$start_date to $end_date"
-  imessage-exporter -l -c compatible -f html -o "$PWD/$start_date to $end_date" -s $start_date -e $end_date
+  $BIN -l -c compatible -f html -o "$PWD/$start_date to $end_date" -s $start_date -e $end_date
   #sleep 5
   find "$PWD/$start_date to $end_date" -type f -maxdepth 1 -not -name "$number.html" -delete
 
   # Convert HTML to PDF
-  wkhtmltopdf --enable-local-file-access "file://$PWD/$start_date to $end_date/$number.html" "$PWD/$start_d$
+  # wkhtmltopdf --enable-local-file-access "file://$PWD/$start_date to $end_date/$number.html" "$PWD/$start_d$
 
 done < messages.csv
