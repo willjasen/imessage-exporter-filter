@@ -3,6 +3,9 @@
 BIN=$(jq -r '.BIN' data.json)
 OUTPUT_DIR=$(jq -r '.OUTPUT_DIR' data.json)
 
+LOG_FILE="$OUTPUT_DIR/messages_$(date +%Y%m%d_%H%M%S).log"
+exec > >(tee -a "$LOG_FILE") 2>&1
+
 # Check if imessage-exporter is installed
 if [ ! -f $BIN ]; then
   echo "imessage-exporter not found. Installing..."
