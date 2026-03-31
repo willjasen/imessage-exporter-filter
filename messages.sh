@@ -1,7 +1,7 @@
 #!/bin/bash
 
-BIN="/Users/willjasen/.cargo/bin/imessage-exporter"
-OUTPUT_DIR="$PWD/exported_messages"
+BIN=$(jq -r '.BIN' data.json)
+OUTPUT_DIR=$(jq -r '.OUTPUT_DIR' data.json)
 
 # Check if imessage-exporter is installed
 if [ ! -f $BIN ]; then

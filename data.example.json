@@ -1,0 +1,4 @@
+{
+  "BIN": "/path/to/imessage-exporter",
+  "OUTPUT_DIR": "/path/to/output/directory"
+}
