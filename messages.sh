@@ -18,7 +18,7 @@ do
   # Export as HTML
   echo -e "\n\n\nCreating HTML for $number from $start_date to $end_date\n\n\n"
   mkdir -p "$OUTPUT_DIR/HTML/$number"
-  $BIN -l -c clone -f html -o "$OUTPUT_DIR/HTML/$number" -s $start_date -e $end_date \
+  $BIN -l -c clone -f html --ignore-disk-warning -o "$OUTPUT_DIR/HTML/$number" -s $start_date -e $end_date \
     --conversation-filter $number;
 
   # Export as TXT
@@ -26,6 +26,7 @@ do
   mkdir -p "$OUTPUT_DIR/TXT/$number"
   $BIN \
     --no-lazy \
+    --ignore-disk-warning \
     --format txt \
     --export-path "$OUTPUT_DIR/TXT/$number" \
     --copy-method clone \
