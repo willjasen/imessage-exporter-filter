@@ -52,8 +52,8 @@ do
     --conversation-filter $number;
 
   # Convert HTML to PDF
-  mkdir -p "$OUTPUT_DIR/PDF"
-  wkhtmltopdf --enable-local-file-access "file://$OUTPUT_DIR/HTML/$number/$number.html" "$OUTPUT_DIR/PDF/$number.pdf"
+  # mkdir -p "$OUTPUT_DIR/PDF"
+  # wkhtmltopdf --enable-local-file-access "file://$OUTPUT_DIR/HTML/$number/$number.html" "$OUTPUT_DIR/PDF/$number.pdf"
 
 done < messages.csv
 }
